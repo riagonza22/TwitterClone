@@ -26,7 +26,7 @@ struct MainTabView: View {
                 }
                 .tabItem {
                     Image(systemName: "magnifyingglass")
-                }.tag(0)
+                }.tag(1)
             
             NotificationsView()
                 .onTapGesture {
@@ -34,7 +34,7 @@ struct MainTabView: View {
                 }
                 .tabItem {
                     Image(systemName: "bell")
-                }.tag(0)
+                }.tag(2)
             
             MessagesView()
                 .onTapGesture {
@@ -42,7 +42,7 @@ struct MainTabView: View {
                 }
                 .tabItem {
                     Image(systemName: "envelope")
-                }.tag(0)
+                }.tag(3)
         }
     }
 }

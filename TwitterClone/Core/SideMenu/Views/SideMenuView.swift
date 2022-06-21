@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SideMenuView: View {
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 32) {
@@ -28,22 +29,22 @@ struct SideMenuView: View {
             }
             .padding(.leading)
             
-            ForEach(SideMenuViewModel.allCases, id: \.rawValue) { viewModel in
-                if viewModel == .profile {
+            ForEach(SideMenuViewModel.allCases, id: \.rawValue) { sideViewModel in
+                if sideViewModel == .profile {
                     NavigationLink {
                         ProfileView()
                     } label: {
-                        SideMenuOptionRowView(viewModel: viewModel)
+                        SideMenuOptionRowView(viewModel: sideViewModel)
                     }
                 
-                } else if viewModel == .logout {
+                } else if sideViewModel == .logout {
                     Button {
-
+                        viewModel.signOut()
                     } label: {
-                        SideMenuOptionRowView(viewModel: viewModel)
+                        SideMenuOptionRowView(viewModel: sideViewModel)
                     }
                 } else {
-                    SideMenuOptionRowView(viewModel: viewModel)
+                    SideMenuOptionRowView(viewModel: sideViewModel)
                 }
             }
             
